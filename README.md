@@ -42,12 +42,13 @@ notes: errors may occur, you can try to change the location, I suggest choosing 
 When you create an environment on Composer, it will simultaneously generate a bucket so you can use the bucket directly as I did, but if not, you can create your bucket by:
 1. Back to your GCP console, choose Cloud Storage. You can find it on More Products > Storage > Cloud Storage, or simply search it at the search bar.
 2. Click **CREATE BUCKET** button. Then fill some fields such as:
- - Name your bucket (example: df9_bkt)
- - Choose where to store your data
- - Leave default for the rest of fields.
- - Click **CREATE**
- - Your bucket will be created and showed on GCS Browser
+  - Name your bucket (example: df9_bkt)
+  - Choose where to store your data
+  - Leave default for the rest of fields.
+  - Click **CREATE**
+  - Your bucket will be created and showed on GCS Browser
  <img width="1376" alt="Screenshot 2023-03-08 at 16 33 54" src="https://user-images.githubusercontent.com/113230789/223676393-3de91164-a5f9-46ad-99f1-6650a474c0b1.png">
+ 
  3. Upload files to bucket:
   - javascript file and json that you can find in the dataflow-function folder.
   - citizen.txt that you can find in the data folder.
@@ -61,13 +62,14 @@ When you create an environment on Composer, it will simultaneously generate a bu
  - Data set ID (example: dataflow_citizen)
  - Data location. Note: make sure the dataset location is the same as the bucket location!
 <img width="577" alt="Screenshot 2023-03-08 at 16 40 20" src="https://user-images.githubusercontent.com/113230789/223677866-1867427b-480a-41d7-8d22-fdf2f09877bd.png">
+
 4. Click **CREATE DATASET**
 5. Ensure that your dataset has been created.
 <img width="395" alt="Screenshot 2023-03-08 at 16 41 35" src="https://user-images.githubusercontent.com/113230789/223678142-d84e2405-7d97-4c4b-ac73-50e8fb029f95.png">
 6. Create table
 <img width="411" alt="Screenshot 2023-03-08 at 16 42 35" src="https://user-images.githubusercontent.com/113230789/223678358-48497b17-3ffe-4870-a94a-11d2b7729150.png">
-7. Fill the Table field such as:
 
+7. Fill the Table field such as:
  - table name (eg: citizen)
  - schema (can be skipped)
 
@@ -76,18 +78,17 @@ When you create an environment on Composer, it will simultaneously generate a bu
 2. Make sure that you have enabled API.
 3. Click **CREATE JOB FROM TEMPLATE**
 4. Fill the field such as:
-
- - Jobname (eg: citizen_to_bq)
- - Regional endpoint: us-central1
- - Dataflow template: Process Data in Bulk (batch) > Text Files on Cloud Storage to BigQuery
- - Javascript path: open your javascript file in the bucket, and copy the gsutil URL.
+  - Jobname (eg: citizen_to_bq)
+  - Regional endpoint: us-central1
+  - Dataflow template: Process Data in Bulk (batch) > Text Files on Cloud Storage to BigQuery
+  - Javascript path: open your javascript file in the bucket, and copy the gsutil URL.
  <img width="715" alt="Screenshot 2023-03-08 at 17 16 38" src="https://user-images.githubusercontent.com/113230789/223686321-801e2561-afd8-4c27-8974-405bea6ba6e2.png">
  
- - Json path: browse your json file.
- - Javascript UDF name: the function to call from your JavaScript file (in this project, the function to call javascript is "transform")
- - Bigquery output table (browse your output table, in this project the table is "citizen")
- - Temporary Bigquery directory (create your temp folder on bucket: format gss://(your bucket)/(folder name)/ )
- - Temporary location (create your temp folder on bucket: format gss://(your bucket)/(folder name)/ )
+  - Json path: browse your json file.
+  - Javascript UDF name: the function to call from your JavaScript file (in this project, the function to call javascript is "transform")
+  - Bigquery output table (browse your output table, in this project the table is "citizen")
+  - Temporary Bigquery directory (create your temp folder on bucket: format gss://(your bucket)/(folder name)/ )
+  - Temporary location (create your temp folder on bucket: format gss://(your bucket)/(folder name)/ )
  
    <img width="492" alt="Screenshot 2023-03-08 at 17 22 53" src="https://user-images.githubusercontent.com/113230789/223687760-62898d4c-a73a-43a9-9f0a-f4bd425c4be0.png">
    
